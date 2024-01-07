@@ -58,6 +58,7 @@ function formatDate(date) {
 
 searchCity("Port Elizabeth");
 displayForecast();
+getForecast("Port Elizabeth");
 
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
@@ -89,4 +90,10 @@ function displayForecast() {
   });
 
   forecastElement.innerHTML = forecastHtml;
+}
+
+function getForecast(city) {
+  let apiKey = "144016bb2ce3odff4b8e4583ca9a5c1t";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
 }
