@@ -64,6 +64,22 @@ ul {
   margin-bottom: 30px;
 }
 
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.forecast-date {
+  font-size: 20px;
+  color: #0000;
+}
+
+.forecast-temperature {
+  font-size: 13px;
+}
+.min-forecast {
+  opacity: 0.4;
+}
 footer {
   border-top: 1px solid #f9f7fe;
   padding: 30px 0 30px 0;
