@@ -28,7 +28,7 @@ function refreshWeather(response) {
   let iconElement = document.querySelector("#icon");
 
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="icon"/>`;
-  temperatureElement.innerHTML = Math.round(temperature);
+  temperatureElement.innerHTML = `${Math.round(temperature)}°C`;
   cityElement.innerHTML = response.data.city;
   dateTimeElement.innerHTML = formatDate(date);
   descriptionElement.innerHTML = response.data.condition.description;
@@ -56,15 +56,13 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes} `;
 }
 
-searchCity("Port Elizabeth");
-displayForecast();
-getForecast("Port Elizabeth");
-
 function displayForecast(response) {
+  console.log(response.data);
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
-    if (index < 5) {
+    if (index > 0 && index < 6) {
       forecastHtml =
         forecastHtml +
         `
@@ -93,6 +91,10 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
+
+searchCity("Port Elizabeth");
+displayForecast();
+getForecast("Port Elizabeth");
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
