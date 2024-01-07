@@ -60,36 +60,45 @@ searchCity("Port Elizabeth");
 displayForecast();
 getForecast("Port Elizabeth");
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
-
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+function displayForecast(response) {
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
 <div class="weather-forecast">
             <div class="forecast-date">
-            ${day}
+            ${formatDay(day.time)}
             </div>
-            <div class="icon">☀️</div>
+            <div class="icon">
+            <img src="${day.condition.icon_url}"/>
+            </div>
             <div class="forecast-temperature">
                 <span class="max-forecast">
-            18 
+            ${Math.round(day.temperature.maximum)}°
             </span>
             <span class="min-forecast">
-            12
+            ${Math.round(day.temperature.minimum)}°
             </span>
             </div>
         </div>
     </div>
 </div>
 `;
+    }
   });
 
+  let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+
+  return days[date.getDay()];
 }
 
 function getForecast(city) {
