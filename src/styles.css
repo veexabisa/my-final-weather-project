@@ -54,11 +54,15 @@ p {
   display: flex;
   font-size: 60px;
 }
+#icon-temp {
+  width: 88px;
+  margin-left: 80%;
+  margin-top: -38px;
+}
 #icon {
   width: 88px;
-  height: 88px;
-  margin-left: 80%;
-  margin-top: -40px;
+  display: block;
+  margin: 0 auto;
 }
 
 .list-conditions {
@@ -69,17 +73,26 @@ p {
 }
 
 .weather-forecast {
-  margin-top: 20px;
-  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
 }
 
 .forecast-date {
+  text-align: center;
   font-size: 20px;
   color: #0000;
+  margin-bottom: 10px;
+  margin-left: -50px;
 }
 
 .forecast-temperature {
+  text-align: center;
+  margin-top: 100px;
+  display: flex;
   font-size: 13px;
+  margin-left: -70px;
+  padding-bottom: 20px;
 }
 .min-forecast {
   opacity: 0.4;
