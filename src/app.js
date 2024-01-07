@@ -25,7 +25,9 @@ function refreshWeather(response) {
   let windSppedElement = document.querySelector("#wind-speed");
   let dateTimeElement = document.querySelector("#date-time");
   let date = new Date(response.data.time * 1000);
+  let iconElement = document.querySelector("#icon");
 
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="icon"/>`;
   temperatureElement.innerHTML = Math.round(temperature);
   cityElement.innerHTML = response.data.city;
   dateTimeElement.innerHTML = formatDate(date);

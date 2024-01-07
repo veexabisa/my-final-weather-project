@@ -50,9 +50,11 @@ p {
   display: flex;
   font-size: 60px;
 }
-.emoji {
-  font-size: 80px;
-  margin-left: 80%;
+#icon {
+  width: 88px;
+  height: 88px;
+  margin-left: 60%;
+  margin-top: -30px;
 }
 
 ul {
